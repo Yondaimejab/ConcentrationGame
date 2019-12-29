@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Home View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="ConcentrationGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KdB-YS-Zhv">
+                                <rect key="frame" x="20" y="64" width="80" height="120"/>
+                                <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="Xv3-jF-TLJ"/>
+                                    <constraint firstAttribute="height" constant="120" id="mbY-Xq-wfS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="61"/>
+                                <connections>
+                                    <action selector="flipCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bVh-Vc-pR4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hoO-fx-5ua">
+                                <rect key="frame" x="120" y="64" width="80" height="120"/>
+                                <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="0lz-N7-Jir"/>
+                                    <constraint firstAttribute="height" constant="120" id="acs-vG-Zcz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="61"/>
+                                <connections>
+                                    <action selector="flipCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sYU-7t-qXo"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flips: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h8T-rO-n7b">
+                                <rect key="frame" x="15" y="796" width="384" height="46"/>
+                                <fontDescription key="fontDescription" name="Georgia-BoldItalic" family="Georgia" pointSize="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="48N-zW-yX4">
+                                <rect key="frame" x="20" y="204" width="80" height="120"/>
+                                <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="2Uc-ew-JGQ"/>
+                                    <constraint firstAttribute="width" constant="80" id="cEY-jH-PcK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="61"/>
+                                <connections>
+                                    <action selector="flipCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="69j-Rs-zpB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ra-Ew-M80">
+                                <rect key="frame" x="120" y="204" width="80" height="120"/>
+                                <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="erM-Is-cAk"/>
+                                    <constraint firstAttribute="width" constant="80" id="xek-qp-K5w"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="61"/>
+                                <connections>
+                                    <action selector="flipCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ypt-I8-Apl"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0Ra-Ew-M80" firstAttribute="leading" secondItem="48N-zW-yX4" secondAttribute="trailing" constant="20" id="0DV-XU-Hif"/>
+                            <constraint firstItem="48N-zW-yX4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="4tY-Va-ufB"/>
+                            <constraint firstItem="h8T-rO-n7b" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="6r0-Xo-sre"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="h8T-rO-n7b" secondAttribute="bottom" constant="20" id="De9-Ml-uOt"/>
+                            <constraint firstItem="48N-zW-yX4" firstAttribute="top" secondItem="KdB-YS-Zhv" secondAttribute="bottom" constant="20" id="GwN-H8-h4L"/>
+                            <constraint firstItem="hoO-fx-5ua" firstAttribute="leading" secondItem="KdB-YS-Zhv" secondAttribute="trailing" constant="20" id="JYo-8Z-jNj"/>
+                            <constraint firstItem="hoO-fx-5ua" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="OcU-Ow-La8"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="h8T-rO-n7b" secondAttribute="trailing" constant="15" id="YbF-15-5uF"/>
+                            <constraint firstItem="0Ra-Ew-M80" firstAttribute="top" secondItem="hoO-fx-5ua" secondAttribute="bottom" constant="20" id="asS-iX-hyh"/>
+                            <constraint firstItem="KdB-YS-Zhv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="avi-1d-CCs"/>
+                            <constraint firstItem="KdB-YS-Zhv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="vAn-28-5af"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="flipCountLabel" destination="h8T-rO-n7b" id="VH3-Me-AGd"/>
+                        <outletCollection property="cardButtons" destination="0Ra-Ew-M80" collectionClass="NSMutableArray" id="Z2R-cB-jOH"/>
+                        <outletCollection property="cardButtons" destination="48N-zW-yX4" collectionClass="NSMutableArray" id="b9C-WZ-f23"/>
+                        <outletCollection property="cardButtons" destination="hoO-fx-5ua" collectionClass="NSMutableArray" id="ogW-SP-AlR"/>
+                        <outletCollection property="cardButtons" destination="KdB-YS-Zhv" collectionClass="NSMutableArray" id="8QI-ob-Wo8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="129.91071428571428"/>
+        </scene>
+    </scenes>
+</document>
