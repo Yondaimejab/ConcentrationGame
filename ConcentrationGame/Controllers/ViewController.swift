@@ -10,25 +10,23 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    lazy var game = Concentration(numberOfPairsOfCard: (cardButtons.count + 1) / 2)
-    var emojiChoices = ["🎃","👻","🎃","👻"]
-    var flipCount: Int = 0 {
-        didSet {
-             flipCountLabel.text = "Flips : \(flipCount)"
-        }
-    }
+    // Atributes
+    lazy var pairsOfCards = (cardButtons.count + 1) / 2
+    private lazy var game = Concentration(numberOfPairsOfCard: pairsOfCards)
+    private var emojiChoices = ["🎃","👻","😈","👽","💀","😱","🤡","👹"]
+    private var emojisForCardIndex = [Int:String]()
     
-    @IBOutlet weak var flipCountLabel: UILabel!
-    @IBOutlet var cardButtons: [UIButton]!
+    // Views
+    @IBOutlet private weak var flipCountLabel: UILabel!
+    @IBOutlet private var cardButtons: [UIButton]!
     
+    // Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
     
-    
-    @IBAction func flipCard(_ sender: UIButton) {
-        notifyFlip()
+    @IBAction private func flipCard(_ sender: UIButton) {
         if let cardIndex = cardButtons.firstIndex(of: sender) {
             game.chooseCard(withIndex: cardIndex)
             updateViewFromModel()
@@ -37,37 +35,46 @@ class HomeViewController: UIViewController {
         }
     }
     
-    func updateViewFromModel() {
-        for index in cardButtons.indices {
-            let button = cardButtons[index]
-            let card = game.cards[index]
-            if card.isFaceUp {
-                flipCard(withTitle: emoji(for: card),for: button)
-            } else {
-                flipCard(withTitle: emoji(for: card),for: button)
-            }
+    @IBAction func newGame(_ sender: Any) {
+        game = Concentration(numberOfPairsOfCard: pairsOfCards)
+        updateViewFromModel()
+        emojiChoices = ["🎃","👻","😈","👽","💀","😱","🤡","👹"]
+    }
+    
+    private func updateViewForCardWith(index : Int) {
+        let card = game.cards[index]
+        if card.isFaceUp {
+            flipCard(withTitle: emoji(for: card), for: index)
+        }else {
+            flipCard(for: index)
         }
     }
     
-    private func notifyFlip(){
-        flipCount += 1
+    private func updateViewFromModel() {
+        for index in cardButtons.indices {
+            updateViewForCardWith(index: index)
+        }
+        flipCountLabel.text = "Flips: \(game.flipCount)"
     }
     
     private func emoji(for card: Card) -> String {
-        return card.isMatched ? "clear" : "👻"
-    }
-    
-    private func flipCard(withTitle emoji: String = "",for button: UIButton ){
-        if button.currentTitle == emoji {
-            button.setTitle("", for: .normal)
-            button.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        }else {
-            button.setTitle(emoji, for: .normal)
-            button.backgroundColor = (emoji == "clear") ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0) : #colorLiteral(red: 0.9549939036, green: 0.1228163317, blue: 0, alpha: 1)
+        if emojisForCardIndex[card.identifier] == nil, emojiChoices.count > 0 {
+            emojisForCardIndex[card.identifier] = emojiChoices.remove(at: Int.random(in: 0...emojiChoices.count-1))
         }
-        notifyFlip()
+        return emojisForCardIndex[card.identifier] ?? "?"
     }
     
-
+    private func flipCard(withTitle emoji: String = "",for index: Int){
+        if emoji.isEmpty {
+            if !game.cards[index].isMatched {
+                cardButtons[index].setTitle(emoji, for: .normal)
+                cardButtons[index].backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            }
+        }else {
+            let match = game.cards[index].isMatched
+            cardButtons[index].setTitle(match ? "" : emoji, for: .normal)
+            cardButtons[index].backgroundColor = match ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0) : #colorLiteral(red: 0.9549939036, green: 0.1228163317, blue: 0, alpha: 1)
+        }
+    }
 }
 
