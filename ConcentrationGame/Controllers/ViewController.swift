@@ -13,7 +13,13 @@ class HomeViewController: UIViewController {
     // Atributes
     lazy var pairsOfCards = (cardButtons.count + 1) / 2
     private lazy var game = Concentration(numberOfPairsOfCard: pairsOfCards)
-    private var emojiChoices = ["🎃","👻","😈","👽","💀","😱","🤡","👹"]
+    private var emojiChoices: [String] = []
+    var themeName: String? {
+        didSet {
+            updateViewFromModel()
+        }
+    }
+    private let viewModel = ConcentrationGameViewModel()
     private var emojisForCardIndex = [Int:String]()
     
     // Views
@@ -24,6 +30,12 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        if themeName == nil { themeName = "Halloween" }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        emojiChoices = viewModel.getEmojiesForThemeWith(name: themeName!)
     }
     
     @IBAction private func flipCard(_ sender: UIButton) {
@@ -38,7 +50,6 @@ class HomeViewController: UIViewController {
     @IBAction func newGame(_ sender: Any) {
         game = Concentration(numberOfPairsOfCard: pairsOfCards)
         updateViewFromModel()
-        emojiChoices = ["🎃","👻","😈","👽","💀","😱","🤡","👹"]
     }
     
     private func updateViewForCardWith(index : Int) {
@@ -51,10 +62,12 @@ class HomeViewController: UIViewController {
     }
     
     private func updateViewFromModel() {
-        for index in cardButtons.indices {
-            updateViewForCardWith(index: index)
+        if cardButtons != nil {
+            for index in cardButtons.indices {
+                updateViewForCardWith(index: index)
+            }
+            flipCountLabel.text = "Flips: \(game.flipCount)"
         }
-        flipCountLabel.text = "Flips: \(game.flipCount)"
     }
     
     private func emoji(for card: Card) -> String {

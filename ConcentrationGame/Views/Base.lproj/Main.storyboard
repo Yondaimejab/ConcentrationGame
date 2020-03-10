@@ -1,12 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Kfc-SA-WTP">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="m0W-0j-n3O">
+            <objects>
+                <navigationController id="oB6-j1-QuA" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NQT-hT-OOq">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="jVw-tf-aGO" kind="relationship" relationship="rootViewController" id="yeW-hZ-y7C"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qA8-pn-5d7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-941" y="-650"/>
+        </scene>
+        <!--Split View Controller-->
+        <scene sceneID="8WC-Hc-uF2">
+            <objects>
+                <splitViewController id="Kfc-SA-WTP" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="oB6-j1-QuA" kind="relationship" relationship="masterViewController" id="gvA-zs-ac7"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="detailViewController" id="6kH-Om-nAq"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ElQ-cj-Rzm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1859" y="-325"/>
+        </scene>
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -22,7 +51,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="0lE-rj-1BR">
-                                <rect key="frame" x="20" y="44" width="374" height="309"/>
+                                <rect key="frame" x="20" y="88" width="374" height="309"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ur8-gP-1g3">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="66"/>
@@ -222,7 +251,56 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="129.91071428571428"/>
+            <point key="canvasLocation" x="-942" y="61"/>
+        </scene>
+        <!--Theme Chooser View Controller-->
+        <scene sceneID="rmI-VR-GCw">
+            <objects>
+                <viewController id="jVw-tf-aGO" customClass="ThemeChooserViewController" customModule="ConcentrationGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gM4-bs-Pny">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Bienvenido a el juego de concentracion elija un tema." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yIX-ig-SFx">
+                                <rect key="frame" x="67" y="191" width="281" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="Rgi-Lf-bl7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="8Ew-4G-zYe">
+                                <rect key="frame" x="20" y="340.5" width="374" height="269"/>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="8Ew-4G-zYe" firstAttribute="leading" secondItem="c6a-Rw-yFw" secondAttribute="leading" constant="20" id="0ee-dm-796"/>
+                            <constraint firstItem="8Ew-4G-zYe" firstAttribute="centerY" secondItem="c6a-Rw-yFw" secondAttribute="centerY" id="1eI-TE-onZ"/>
+                            <constraint firstItem="yIX-ig-SFx" firstAttribute="centerX" secondItem="c6a-Rw-yFw" secondAttribute="centerX" id="3uo-Co-SH9"/>
+                            <constraint firstItem="c6a-Rw-yFw" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="yIX-ig-SFx" secondAttribute="trailing" constant="20" id="4W3-8h-azF"/>
+                            <constraint firstItem="yIX-ig-SFx" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="c6a-Rw-yFw" secondAttribute="leading" constant="30" id="IIC-bB-f9u"/>
+                            <constraint firstItem="yIX-ig-SFx" firstAttribute="leading" secondItem="c6a-Rw-yFw" secondAttribute="leading" constant="67" id="Jyf-HG-KHG"/>
+                            <constraint firstItem="8Ew-4G-zYe" firstAttribute="centerX" secondItem="c6a-Rw-yFw" secondAttribute="centerX" id="Kbm-2X-8WA"/>
+                            <constraint firstItem="yIX-ig-SFx" firstAttribute="top" secondItem="c6a-Rw-yFw" secondAttribute="top" constant="103" id="LL0-Ss-hiH"/>
+                            <constraint firstItem="8Ew-4G-zYe" firstAttribute="height" secondItem="gM4-bs-Pny" secondAttribute="height" multiplier="0.3" priority="750" id="V9N-Jm-maW"/>
+                            <constraint firstItem="c6a-Rw-yFw" firstAttribute="trailing" secondItem="8Ew-4G-zYe" secondAttribute="trailing" constant="20" id="m6J-WK-ah6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="c6a-Rw-yFw"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="5i4-qT-TaT"/>
+                    <connections>
+                        <outlet property="themesStackView" destination="8Ew-4G-zYe" id="vL6-pQ-dYU"/>
+                        <segue destination="BYZ-38-t0r" kind="showDetail" identifier="Show Concentration Game" id="mg6-Wm-ujz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oHK-Cn-ykF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-35" y="-650"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="mg6-Wm-ujz"/>
+    </inferredMetricsTieBreakers>
 </document>
